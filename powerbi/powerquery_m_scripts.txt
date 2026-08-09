@@ -1,0 +1,72 @@
+// =====================================================================
+// Health Record Portal Analytics — Power Query (M) reference scripts
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// 1. dim_date — generated in-model so time intelligence works without a
+//    physical date file. New Source > Blank Query > Advanced Editor.
+// ---------------------------------------------------------------------
+let
+    StartDate = #date(2024, 1, 1),
+    EndDate   = #date(2026, 8, 8),
+    DayCount  = Duration.Days(EndDate - StartDate) + 1,
+    Dates     = List.Dates(StartDate, DayCount, #duration(1, 0, 0, 0)),
+    ToTable   = Table.FromList(Dates, Splitter.SplitByNothing(), {"date_key"}),
+    AddYear   = Table.AddColumn(ToTable, "year", each Date.Year([date_key]), Int64.Type),
+    AddMonth  = Table.AddColumn(AddYear, "month", each Date.Month([date_key]), Int64.Type),
+    AddMonthName = Table.AddColumn(AddMonth, "month_name", each Date.MonthName([date_key]), type text),
+    AddYearMonth = Table.AddColumn(AddMonthName, "year_month",
+        each Text.From([year]) & "-" & Text.PadStart(Text.From([month]), 2, "0"), type text),
+    AddQuarter = Table.AddColumn(AddYearMonth, "quarter",
+        each Text.From([year]) & "-Q" & Text.From(Date.QuarterOfYear([date_key])), type text),
+    AddDOW     = Table.AddColumn(AddQuarter, "day_of_week", each Date.DayOfWeekName([date_key]), type text),
+    AddWeekend = Table.AddColumn(AddDOW, "is_weekend",
+        each Date.DayOfWeek([date_key], Day.Monday) >= 5, type logical),
+    SetTypes   = Table.TransformColumnTypes(AddWeekend, {{"date_key", type date}})
+in
+    SetTypes
+
+
+// ---------------------------------------------------------------------
+// 2. fact_portal_engagement — import + type + trim, applied per source
+//    CSV (repeat the pattern for the other fact/dim CSVs, adjusting
+//    column types to match dim_patients / fact_encounters / etc.).
+// ---------------------------------------------------------------------
+let
+    Source = Csv.Document(
+        File.Contents("<repo-path>\data\raw\fact_portal_engagement.csv"),
+        [Delimiter = ",", Columns = 6, Encoding = 65001, QuoteStyle = QuoteStyle.None]
+    ),
+    PromoteHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+    ChangedTypes = Table.TransformColumnTypes(PromoteHeaders, {
+        {"event_id", type text},
+        {"patient_id", type text},
+        {"event_date", type date},
+        {"event_type", type text},
+        {"session_duration_sec", Int64.Type},
+        {"device_type", type text}
+    })
+in
+    ChangedTypes
+
+
+// ---------------------------------------------------------------------
+// 3. patient_engagement_scores — the advanced-analytics extract
+//    (python/advanced_analytics.py). Import as a plain lookup table
+//    keyed on patient_id; do NOT re-derive the score in DAX/M — the
+//    scoring logic (and the churn-model features it feeds) should have
+//    exactly one source of truth.
+// ---------------------------------------------------------------------
+let
+    Source = Csv.Document(
+        File.Contents("<repo-path>\data\processed\patient_engagement_scores.csv"),
+        [Delimiter = ",", Columns = 18, Encoding = 65001]
+    ),
+    PromoteHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+    ChangedTypes = Table.TransformColumnTypes(PromoteHeaders, {
+        {"patient_id", type text},
+        {"engagement_score", type number},
+        {"engagement_tier", type text}
+    })
+in
+    ChangedTypes

@@ -1,0 +1,193 @@
+department_name,year_month,total_events,active_patients,avg_session_sec,engagement_rank_in_month
+Primary Care,2024-01,80,16,187.0,1
+Pediatrics,2024-01,53,8,193.0,2
+Cardiology,2024-01,39,8,216.0,3
+Behavioral Health,2024-01,18,5,194.0,4
+Oncology,2024-01,7,2,202.0,5
+Endocrinology,2024-01,3,1,155.0,6
+Primary Care,2024-02,135,35,194.0,1
+Pediatrics,2024-02,107,21,174.0,2
+Cardiology,2024-02,86,23,196.0,3
+Behavioral Health,2024-02,66,13,179.0,4
+Endocrinology,2024-02,56,9,175.0,5
+Oncology,2024-02,46,8,231.0,6
+Primary Care,2024-03,298,67,182.0,1
+Pediatrics,2024-03,160,35,190.0,2
+Behavioral Health,2024-03,140,32,171.0,3
+Endocrinology,2024-03,109,20,183.0,4
+Cardiology,2024-03,103,24,176.0,5
+Oncology,2024-03,54,14,186.0,6
+Primary Care,2024-04,341,92,175.0,1
+Behavioral Health,2024-04,233,53,172.0,2
+Pediatrics,2024-04,231,50,178.0,3
+Cardiology,2024-04,170,38,168.0,4
+Endocrinology,2024-04,147,34,189.0,5
+Oncology,2024-04,98,21,172.0,6
+Primary Care,2024-05,566,127,170.0,1
+Pediatrics,2024-05,263,72,180.0,2
+Cardiology,2024-05,256,58,173.0,3
+Behavioral Health,2024-05,238,64,180.0,4
+Endocrinology,2024-05,165,43,170.0,5
+Oncology,2024-05,99,27,189.0,6
+Primary Care,2024-06,703,161,181.0,1
+Pediatrics,2024-06,368,92,188.0,2
+Behavioral Health,2024-06,333,76,194.0,3
+Endocrinology,2024-06,244,55,191.0,4
+Cardiology,2024-06,222,64,172.0,5
+Oncology,2024-06,135,30,193.0,6
+Primary Care,2024-07,592,157,183.0,1
+Pediatrics,2024-07,352,101,180.0,2
+Behavioral Health,2024-07,298,82,184.0,3
+Cardiology,2024-07,215,70,158.0,4
+Endocrinology,2024-07,171,45,168.0,5
+Oncology,2024-07,104,30,171.0,6
+Primary Care,2024-08,721,194,191.0,1
+Pediatrics,2024-08,490,115,173.0,2
+Behavioral Health,2024-08,363,88,175.0,3
+Cardiology,2024-08,327,87,177.0,4
+Endocrinology,2024-08,218,58,188.0,5
+Oncology,2024-08,133,32,191.0,6
+Primary Care,2024-09,882,214,180.0,1
+Pediatrics,2024-09,607,140,185.0,2
+Behavioral Health,2024-09,418,105,184.0,3
+Cardiology,2024-09,405,92,183.0,4
+Endocrinology,2024-09,293,76,170.0,5
+Oncology,2024-09,197,48,186.0,6
+Primary Care,2024-10,1010,261,183.0,1
+Pediatrics,2024-10,693,165,185.0,2
+Behavioral Health,2024-10,493,110,173.0,3
+Cardiology,2024-10,427,119,177.0,4
+Endocrinology,2024-10,331,73,166.0,5
+Oncology,2024-10,236,54,173.0,6
+Primary Care,2024-11,1136,294,178.0,1
+Pediatrics,2024-11,647,156,177.0,2
+Behavioral Health,2024-11,495,116,184.0,3
+Cardiology,2024-11,448,119,185.0,4
+Endocrinology,2024-11,301,82,170.0,5
+Oncology,2024-11,226,66,186.0,6
+Primary Care,2024-12,1077,293,174.0,1
+Pediatrics,2024-12,565,159,172.0,2
+Behavioral Health,2024-12,439,112,181.0,3
+Cardiology,2024-12,430,124,175.0,4
+Endocrinology,2024-12,372,91,181.0,5
+Oncology,2024-12,154,46,161.0,6
+Primary Care,2025-01,1668,347,180.0,1
+Pediatrics,2025-01,932,206,178.0,2
+Cardiology,2025-01,630,140,187.0,3
+Behavioral Health,2025-01,617,158,170.0,4
+Endocrinology,2025-01,462,99,172.0,5
+Oncology,2025-01,303,66,176.0,6
+Primary Care,2025-02,1567,370,177.0,1
+Pediatrics,2025-02,841,196,169.0,2
+Behavioral Health,2025-02,612,164,179.0,3
+Cardiology,2025-02,601,150,182.0,4
+Endocrinology,2025-02,461,101,181.0,5
+Oncology,2025-02,300,68,172.0,6
+Primary Care,2025-03,1591,385,184.0,1
+Pediatrics,2025-03,946,229,182.0,2
+Behavioral Health,2025-03,735,178,175.0,3
+Cardiology,2025-03,673,168,182.0,4
+Endocrinology,2025-03,431,104,177.0,5
+Oncology,2025-03,273,72,178.0,6
+Primary Care,2025-04,1755,405,178.0,1
+Pediatrics,2025-04,1057,236,172.0,2
+Behavioral Health,2025-04,782,188,177.0,3
+Cardiology,2025-04,671,170,181.0,4
+Endocrinology,2025-04,457,111,182.0,5
+Oncology,2025-04,340,86,169.0,6
+Primary Care,2025-05,1910,443,179.0,1
+Pediatrics,2025-05,951,244,182.0,2
+Behavioral Health,2025-05,808,194,178.0,3
+Cardiology,2025-05,754,186,180.0,4
+Endocrinology,2025-05,572,131,184.0,5
+Oncology,2025-05,447,94,184.0,6
+Primary Care,2025-06,1889,447,176.0,1
+Pediatrics,2025-06,1068,251,176.0,2
+Behavioral Health,2025-06,824,197,187.0,3
+Cardiology,2025-06,750,192,183.0,4
+Endocrinology,2025-06,553,135,175.0,5
+Oncology,2025-06,392,104,180.0,6
+Primary Care,2025-07,1636,437,180.0,1
+Pediatrics,2025-07,1012,247,180.0,2
+Behavioral Health,2025-07,724,188,180.0,3
+Cardiology,2025-07,692,184,182.0,4
+Endocrinology,2025-07,465,118,181.0,5
+Oncology,2025-07,369,93,169.0,6
+Primary Care,2025-08,1711,458,172.0,1
+Pediatrics,2025-08,971,250,175.0,2
+Behavioral Health,2025-08,769,205,179.0,3
+Cardiology,2025-08,651,182,175.0,4
+Endocrinology,2025-08,537,135,177.0,5
+Oncology,2025-08,361,96,188.0,6
+Primary Care,2025-09,2037,492,179.0,1
+Pediatrics,2025-09,1167,265,188.0,2
+Behavioral Health,2025-09,947,222,181.0,3
+Cardiology,2025-09,749,192,184.0,4
+Endocrinology,2025-09,611,141,180.0,5
+Oncology,2025-09,450,112,181.0,6
+Primary Care,2025-10,2218,529,178.0,1
+Pediatrics,2025-10,1202,273,183.0,2
+Behavioral Health,2025-10,904,229,184.0,3
+Cardiology,2025-10,867,219,174.0,4
+Endocrinology,2025-10,641,155,180.0,5
+Oncology,2025-10,438,109,178.0,6
+Primary Care,2025-11,2238,542,185.0,1
+Pediatrics,2025-11,1235,276,182.0,2
+Behavioral Health,2025-11,1086,248,181.0,3
+Cardiology,2025-11,878,215,187.0,4
+Endocrinology,2025-11,686,156,182.0,5
+Oncology,2025-11,542,122,174.0,6
+Primary Care,2025-12,1838,501,180.0,1
+Pediatrics,2025-12,967,270,180.0,2
+Behavioral Health,2025-12,777,223,187.0,3
+Cardiology,2025-12,734,191,183.0,4
+Endocrinology,2025-12,502,145,181.0,5
+Oncology,2025-12,412,107,176.0,6
+Primary Care,2026-01,2475,552,180.0,1
+Pediatrics,2026-01,1456,325,183.0,2
+Behavioral Health,2026-01,1234,265,177.0,3
+Cardiology,2026-01,1082,238,176.0,4
+Endocrinology,2026-01,731,174,181.0,5
+Oncology,2026-01,591,124,181.0,6
+Primary Care,2026-02,2087,540,180.0,1
+Pediatrics,2026-02,1253,290,184.0,2
+Behavioral Health,2026-02,1048,249,176.0,3
+Cardiology,2026-02,889,227,169.0,4
+Endocrinology,2026-02,687,158,182.0,5
+Oncology,2026-02,518,125,177.0,6
+Primary Care,2026-03,2127,549,174.0,1
+Pediatrics,2026-03,1249,294,177.0,2
+Behavioral Health,2026-03,1146,273,186.0,3
+Cardiology,2026-03,934,228,182.0,4
+Endocrinology,2026-03,728,171,167.0,5
+Oncology,2026-03,462,117,177.0,6
+Primary Care,2026-04,2274,540,178.0,1
+Pediatrics,2026-04,1287,299,175.0,2
+Behavioral Health,2026-04,971,260,174.0,3
+Cardiology,2026-04,962,230,186.0,4
+Endocrinology,2026-04,703,171,184.0,5
+Oncology,2026-04,487,117,178.0,6
+Primary Care,2026-05,2420,562,177.0,1
+Pediatrics,2026-05,1199,286,181.0,2
+Behavioral Health,2026-05,1121,266,179.0,3
+Cardiology,2026-05,935,235,169.0,4
+Endocrinology,2026-05,701,180,172.0,5
+Oncology,2026-05,528,132,189.0,6
+Primary Care,2026-06,2293,564,178.0,1
+Pediatrics,2026-06,1342,300,182.0,2
+Behavioral Health,2026-06,1047,251,179.0,3
+Cardiology,2026-06,933,234,183.0,4
+Endocrinology,2026-06,743,178,181.0,5
+Oncology,2026-06,551,126,182.0,6
+Primary Care,2026-07,2059,520,178.0,1
+Pediatrics,2026-07,1082,279,182.0,2
+Behavioral Health,2026-07,877,228,185.0,3
+Cardiology,2026-07,729,210,185.0,4
+Endocrinology,2026-07,588,147,177.0,5
+Oncology,2026-07,403,104,174.0,6
+Primary Care,2026-08,1985,514,178.0,1
+Pediatrics,2026-08,1129,272,180.0,2
+Behavioral Health,2026-08,889,241,178.0,3
+Cardiology,2026-08,762,212,179.0,4
+Endocrinology,2026-08,580,158,186.0,5
+Oncology,2026-08,425,115,173.0,6

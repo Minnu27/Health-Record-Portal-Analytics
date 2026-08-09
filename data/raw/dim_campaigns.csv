@@ -1,0 +1,10 @@
+campaign_id,campaign_name,start_date,end_date,target_segment,target_department_id,channel
+CMP01,New Patient Portal Onboarding,2024-02-01,2024-03-15,All,,Email+SMS
+CMP02,Chronic Care Check-In Push,2024-06-01,2024-07-01,Chronic Condition,,Phone+Portal
+CMP03,Telehealth Awareness Drive,2024-09-01,2024-10-01,All,D01,Email
+CMP04,Senior Digital Access Program,2025-01-15,2025-03-01,65+,,Mail+Phone
+CMP05,Behavioral Health Engagement Sprint,2025-04-01,2025-05-01,All,D05,Portal+SMS
+CMP06,Preventive Screening Reminder,2025-08-01,2025-09-01,All,,SMS
+CMP07,Oncology Support Portal Rollout,2025-11-01,2025-12-01,All,D04,Phone+Portal
+CMP08,Spring Wellness Portal Refresh,2026-03-01,2026-04-01,All,,Email+SMS
+CMP09,Uninsured/Medicaid Access Outreach,2026-06-01,2026-07-15,Medicaid/Uninsured,,Phone+Mail
