@@ -1,0 +1,56 @@
+// =====================================================================
+// Health Record Portal Analytics — Tableau calculated fields
+// (Analysis > Create Calculated Field). Grouped by dashboard.
+// =====================================================================
+
+// --------------------------- Executive Summary ---------------------------
+
+// MAU Prior Month (table calc, computed along the year_month axis)
+LOOKUP(SUM([active_users]), -1)
+
+// MAU MoM Growth %
+(SUM([active_users]) - LOOKUP(SUM([active_users]), -1))
+/ ABS(LOOKUP(SUM([active_users]), -1))
+
+// NPS Category (for a KPI traffic-light indicator)
+IF [nps_score] >= 30 THEN "Strong"
+ELSEIF [nps_score] >= 0 THEN "Improving"
+ELSE "Needs Attention"
+END
+
+// --------------------------- Engagement Deep-Dive ---------------------------
+
+// Engagement Tier Sort Order (so the tier axis renders Inactive->High, not
+// alphabetically)
+CASE [engagement_tier]
+    WHEN "Inactive" THEN 1
+    WHEN "Low" THEN 2
+    WHEN "Medium" THEN 3
+    WHEN "High" THEN 4
+END
+
+// Participation Rate that stays correct under a department filter — an
+// LOD expression so the denominator (panel size) ignores the department
+// filter that's only meant to slice the numerator's dashboard view.
+// (Use only if connecting live to dim_patients / fact_portal_engagement;
+// the pre-aggregated 02_patient_participation_rate.csv already handles
+// this in SQL for the non-live path.)
+{ FIXED [year_month] : COUNTD(
+    IF DATEDIFF('month', [patient_since], [Parameter.AsOfDate]) >= 0 THEN [patient_id] END
+) }
+
+// --------------------------- Operational View ---------------------------
+
+// No-Show Rate (guarding divide-by-zero when a department has 0 in-person visits)
+IIF(SUM([in_person_visits]) = 0, NULL, SUM([no_shows]) / SUM([in_person_visits]))
+
+// Telehealth Adoption Flag (bin providers/departments for a quick filter)
+IF [telehealth_adoption_pct] >= 40 THEN "High Adoption"
+ELSEIF [telehealth_adoption_pct] >= 25 THEN "Moderate Adoption"
+ELSE "Low Adoption"
+END
+
+// --------------------------- Outreach & Campaigns ---------------------------
+
+// Engagement Lift Direction (color-codes the waterfall/bar chart)
+IF [avg_engagement_lift] > 0 THEN "Positive Lift" ELSE "No Lift / Negative" END

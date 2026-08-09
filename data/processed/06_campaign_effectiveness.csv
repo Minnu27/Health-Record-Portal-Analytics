@@ -1,0 +1,10 @@
+campaign_id,campaign_name,patients_reached,patients_engaged,campaign_engagement_rate_pct,avg_events_30d_before,avg_events_30d_after,avg_engagement_lift
+CMP04,Senior Digital Access Program,258,89,34.5,0.4,0.62,0.22
+CMP06,Preventive Screening Reminder,1810,854,47.2,0.9,1.13,0.22
+CMP01,New Patient Portal Onboarding,2941,1094,37.2,0.07,0.16,0.08
+CMP03,Telehealth Awareness Drive,941,307,32.6,0.52,0.59,0.07
+CMP09,Uninsured/Medicaid Access Outreach,518,192,37.1,1.11,1.16,0.05
+CMP05,Behavioral Health Engagement Sprint,409,243,59.4,0.97,1.01,0.04
+CMP02,Chronic Care Check-In Push,603,305,50.6,0.39,0.39,0.0
+CMP08,Spring Wellness Portal Refresh,2221,732,33.0,1.38,1.36,-0.02
+CMP07,Oncology Support Portal Rollout,208,119,57.2,1.37,1.25,-0.12

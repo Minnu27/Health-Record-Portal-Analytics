@@ -1,0 +1,7 @@
+department_id,department_name,region_hub
+D01,Primary Care,Northeast
+D02,Cardiology,West
+D03,Pediatrics,South
+D04,Oncology,Midwest
+D05,Behavioral Health,Midwest
+D06,Endocrinology,West

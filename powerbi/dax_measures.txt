@@ -1,0 +1,109 @@
+// =====================================================================
+// Health Record Portal Analytics — Power BI DAX Measure Library
+// Paste into a dedicated "_Measures" table in the model.
+// =====================================================================
+
+// --------------------------- Engagement ---------------------------
+
+Active Patients (MAU) =
+DISTINCTCOUNT ( fact_portal_engagement[patient_id] )
+
+Portal Events =
+COUNTROWS ( fact_portal_engagement )
+
+Avg Session Duration (sec) =
+AVERAGE ( fact_portal_engagement[session_duration_sec] )
+
+Enrolled Patients =
+CALCULATE (
+    DISTINCTCOUNT ( dim_patients[patient_id] ),
+    dim_patients[portal_enrolled] = TRUE
+)
+
+Patient Participation Rate % =
+DIVIDE ( [Active Patients (MAU)], DISTINCTCOUNT ( dim_patients[patient_id] ) )
+
+MAU MoM Growth % =
+VAR CurrentMAU = [Active Patients (MAU)]
+VAR PriorMAU =
+    CALCULATE ( [Active Patients (MAU)], DATEADD ( dim_date[date_key], -1, MONTH ) )
+RETURN
+    DIVIDE ( CurrentMAU - PriorMAU, PriorMAU )
+
+Rolling 3-Month Avg MAU =
+AVERAGEX (
+    DATESINPERIOD ( dim_date[date_key], MAX ( dim_date[date_key] ), -3, MONTH ),
+    [Active Patients (MAU)]
+)
+
+// ------------------------- Engagement score -------------------------
+// Reads the pre-computed extract from python/advanced_analytics.py
+// rather than recomputing the composite score in DAX row context.
+
+Avg Engagement Score =
+AVERAGE ( patient_engagement_scores[engagement_score] )
+
+High Engagement Patients =
+CALCULATE (
+    DISTINCTCOUNT ( patient_engagement_scores[patient_id] ),
+    patient_engagement_scores[engagement_tier] = "High"
+)
+
+% High Engagement =
+DIVIDE ( [High Engagement Patients], DISTINCTCOUNT ( patient_engagement_scores[patient_id] ) )
+
+// --------------------------- Operational ---------------------------
+
+Total Encounters =
+COUNTROWS ( fact_encounters )
+
+Telehealth Visits =
+CALCULATE ( COUNTROWS ( fact_encounters ), fact_encounters[encounter_type] = "Telehealth" )
+
+In-Person Visits =
+CALCULATE ( COUNTROWS ( fact_encounters ), fact_encounters[encounter_type] = "In-Person Visit" )
+
+Telehealth Adoption % =
+DIVIDE ( [Telehealth Visits], [Telehealth Visits] + [In-Person Visits] )
+
+No-Shows =
+CALCULATE ( COUNTROWS ( fact_encounters ), fact_encounters[status] = "No-Show" )
+
+No-Show Rate % =
+DIVIDE ( [No-Shows], [In-Person Visits] )
+
+// --------------------------- Satisfaction ---------------------------
+
+Survey Responses =
+COUNTROWS ( fact_satisfaction_surveys )
+
+Promoters =
+CALCULATE ( COUNTROWS ( fact_satisfaction_surveys ), fact_satisfaction_surveys[nps_score] >= 9 )
+
+Detractors =
+CALCULATE ( COUNTROWS ( fact_satisfaction_surveys ), fact_satisfaction_surveys[nps_score] <= 6 )
+
+NPS Score =
+DIVIDE ( [Promoters] - [Detractors], [Survey Responses] ) * 100
+
+Avg CSAT =
+AVERAGE ( fact_satisfaction_surveys[csat_score] )
+
+// --------------------------- Outreach / campaigns ---------------------------
+
+Campaign Touches =
+COUNTROWS ( fact_campaign_responses )
+
+Campaign Engaged =
+CALCULATE ( COUNTROWS ( fact_campaign_responses ), fact_campaign_responses[engaged_flag] = TRUE )
+
+Campaign Engagement Rate % =
+DIVIDE ( [Campaign Engaged], [Campaign Touches] )
+
+// --------------------------- Formatting helpers ---------------------------
+// Apply as the measure's "Format" property in Power BI (not extra DAX):
+//   Patient Participation Rate %, Telehealth Adoption %, No-Show Rate %,
+//   Campaign Engagement Rate %, % High Engagement, MAU MoM Growth %  -> Percentage, 1 decimal
+//   NPS Score -> #,##0 (can be negative)
+//   Avg CSAT  -> 0.0
+//   Avg Session Duration (sec) -> #,##0
